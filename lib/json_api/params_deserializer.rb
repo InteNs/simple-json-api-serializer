@@ -27,7 +27,6 @@ module JSONApi
       relationships.each do |name, data|
         data = data['data']
         name = sanitize_attribute_name(name)
-
         if data.is_a? Array
           attributes["#{name.singularize}_ids"] = data.map { |r| r.fetch('id') }
         elsif data
