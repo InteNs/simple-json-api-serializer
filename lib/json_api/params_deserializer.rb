@@ -40,7 +40,7 @@ module JSONApi
     end
 
     def sanitize_hash(hash)
-      hash.map do |key, value|
+      hash.to_unsafe_h.map do |key, value|
         value = sanitize_hash(value) if value.is_a?(Hash)
         [sanitize_attribute_name(key), value]
       end.to_h
